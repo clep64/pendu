@@ -75,13 +75,21 @@ body {
   text-align: center;
   
 }
-/*
+
 @media only screen and (min-width: 1000px) {
-  #main > img {
-    padding-right: 1%;
+  #pimageerreur {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+  }
+  #submain {
+     display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    min-width: 30em;
   }
 }
-*/
+
 #main > img {
   padding-right: 1%;
 }
