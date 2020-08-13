@@ -1,0 +1,122 @@
+.bodyhtml {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+#titrehtml {
+  margin: 0;
+  height: 6%;
+  text-align: center;
+}
+.centerimagetitre {
+  display: inline-block;
+  height: 100%;
+}
+#titrehtml > h1 {
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  text-align: center;
+  padding-left: 1em;
+  margin: 0;  
+}
+#mainhtml{
+  height: 94%;
+  margin: 0 ;
+  text-align: center;
+} 
+#boutonjeu{
+  margin-top: 10vh;
+  font-size: 1.2em;
+  display: inline-block;
+  vertical-align: top;
+}
+#mainhtml > img{
+  padding: 0;
+  display: inline-block;
+  max-height: 100%;
+  max-width: 50%;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#pniveau {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0;
+}
+#buttonniveau {
+  text-align: center;
+  
+}
+.niveau {
+  margin-right: 1.5em;
+  display: inline;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 2em;
+  color: white;
+  padding: 0.1em 0.8em;
+  text-align: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+#affichmot{
+  text-align: center;
+}
+
+#main {
+  display: none;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+/*
+@media only screen and (min-width: 1000px) {
+  #main > img {
+    padding-right: 1%;
+  }
+}
+*/
+#main > img {
+  padding-right: 1%;
+}
+#newgame{
+  margin-top: 2em;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 2em;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1em;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+}
+.image-droite {
+  float: right;
+}
+#pimageerreur{
+  margin: 0 auto;
+  overflow: hidden;
+}
+#imageerreur  {
+  margin-left: 0px;
+}
+#clavier {
+  width: 18em;
+  margin: 0 auto;
+}
+.buttonclavier {
+  background-color: LightBlue;
+  font-size: 1.3em;
+  margin-right: 0.1em;
+  padding: 0 0.2em;
+}
