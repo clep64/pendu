@@ -1,14 +1,13 @@
 var level = 0;
 var mot = "";
-var lettreok = 0;
 var nbtry = 0;
 var nberror = 0;
 var motsansaccent = no_accent(mot);
 var motaffiche2 ="";
-var nberrormax = 9;
+var nberrormax = 8;
+var motarray = [];
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var imgsrcarray = [
-  "images/pendu-err/p1.jpg",
   "images/pendu-err/p1.jpg",
   "images/pendu-err/p2.jpg",
   "images/pendu-err/p3.jpg",
@@ -27,14 +26,12 @@ function loadinit() {
 //  and give focus to the first input
 //  hide the rest of the page but the input of level
 //
-  lettreok = 0;
   nbtry = 0;    
   document.getElementById("main").style.display = "none";
   document.getElementById('infolettre').innerHTML = "";
   document.getElementById("infolettre").style.fontSize = "1em";
   document.getElementById('nbessai').innerHTML = "";
-  document.getElementById("saisielettre").style.display = "block";
-  
+  document.getElementById("saisielettre").style.display = "block";  
 }
 //====================================================================================
 function checkniveau(niv) { 
@@ -46,6 +43,7 @@ function checkniveau(niv) {
   level = niv;
   document.getElementById("buttonniveau").style.display = "none";
   document.getElementById('pniveau').innerHTML = "vous êtes au niveau: "+level;  
+
   getword(level);
 
   var i = 0;
@@ -71,13 +69,7 @@ function checkniveau(niv) {
   } 
   return true;  
 }
-
 //====================================================================================  
-function newgame(){
-  window.location.reload();
-}
-//====================================================================================  
-
 function letterclicked(event){
   var lettre = event.target.innerHTML ;
   if (level == 1) {
@@ -93,7 +85,6 @@ function letterclicked(event){
   while (motsansaccent.indexOf(x, indexlettre) >= 0) {
     lettreinmot = true;
     indexlettre = motsansaccent.indexOf(x, indexlettre);
-    lettreok++;       
     var motaffiche = document.getElementById("affichmot").innerHTML ;      
     motaffiche2 = motaffiche.substr(0,indexlettre) + mot.charAt(indexlettre) + motaffiche.substr(indexlettre+1,motaffiche.length);      
     document.getElementById("affichmot").innerHTML = motaffiche2; 
@@ -141,7 +132,6 @@ function letterclicked(event){
     document.getElementById("erreurrestant").innerHTML = "";
   }
 }
-
 //====================================================================================  
 function getword(glevel){
   mot = "";
@@ -150,17 +140,29 @@ function getword(glevel){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       mot = this.responseText; 
-      motsansaccent = no_accent(mot);  
-      motaffiche2 = "?".repeat(motsansaccent.length);
-      document.getElementById('affichmot').innerHTML = motaffiche2; 
+      motsansaccent = no_accent(mot);       
       document.getElementById("main").style.display = "block";
-        
+    console.log(mot);
+    console.log(motsansaccent);
+      motarray = motsansaccent.split(""); 
+      motaffiche2 = "?".repeat(motarray.length); 
+      var i = motarray.indexOf("-", 0);       
+      while (i >= 0) {         
+        motaffiche2 = motaffiche2.substr(0,i) + "-" + motaffiche2.substr(i+1,motarray.length);
+        console.log(motaffiche2);
+        i = motarray.indexOf("-", ++i);         
+      }
+      document.getElementById('affichmot').innerHTML = motaffiche2;       
     }
   };
   
   xhttp.open("GET", "pendu-word.php?niveau="+glevel, true);
   xhttp.send();  
 
+}
+//====================================================================================  
+function newgame(){
+  window.location.reload();
 }
 //====================================================================================  
 function disptime(){
@@ -199,7 +201,7 @@ function no_accent(my_string)
 		{
 			my_string = my_string.replace(pattern_accent[i],pattern_replace_accent[i]);
     }
-		my_string = my_string.replace(/[^a-zA-Z]/g,"");
+		my_string = my_string.replace(/[^a-zA-Z\-]/g,"");
     
 		return my_string;
 }

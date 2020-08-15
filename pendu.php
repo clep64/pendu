@@ -8,7 +8,7 @@
 	</head>
 	
     <body onload="loadinit()">
-        <<div id="titrehtml">
+        <div id="titrehtml">
             <img src="images/jeux.png" alt="logo du site" class="centerimagetitre">
             <h1> Jouons au Pendu </h1>
         </div>
@@ -26,7 +26,6 @@
 			</p>
 			<div id="submain">
 				<div id="mot" >
-				<!--    <h3 class=titremot> le mot à trouver est: </h3>   -->
 					<h2 id=affichmot></h2>
 				</div>
 				<div id="corpsjeu">

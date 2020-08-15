@@ -29,9 +29,10 @@
             $motlenmin = 4;
     }
     // put list of words in a table and get randomly one word in it
+    // send the word all in lower case
     while(!feof($fichier)){
         $nom = trim(fgets($fichier));                  
-        if ( !strpos($nom, "-") && mb_strlen($nom) >= $motlenmin && mb_strlen($nom) <= $motlenmax ) {
+        if ( mb_strlen($nom) >= $motlenmin && mb_strlen($nom) <= $motlenmax ) {
             $tab[] = $nom;
         }
     }
