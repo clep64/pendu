@@ -24,16 +24,20 @@
   height: 94%;
   margin: 0 ;
   text-align: center;
-} 
-#boutonjeu{
-  margin-top: 10vh;
-  font-size: 1.2em;
+}
+#boutonlist {
   display: inline-block;
   vertical-align: top;
 }
+ 
+#boutonlist button{
+  margin: 10vh auto;
+  font-size: 1.2em;
+  display: block;
+}  
 #mainhtml > img{
   padding: 0;
-  display: inline-block;
+  
   max-height: 100%;
   max-width: 50%;
 }

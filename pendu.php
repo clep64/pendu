@@ -5,8 +5,13 @@
 	    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
         <LINK rel="stylesheet" type="text/css" href="pendu.css">
         <link rel="shortcut icon" type="image/png" href="images/jeux.png"/>
+		<script>		
+			<?php
+				$lang = $_GET['lang'];
+				echo "var lang = '" . $lang ."';";
+			?>
+		</script>
 	</head>
-	
     <body onload="loadinit()">
         <div id="titrehtml">
             <img src="images/jeux.png" alt="logo du site" class="centerimagetitre">
@@ -29,11 +34,12 @@
 					<h2 id=affichmot></h2>
 				</div>
 				<div id="corpsjeu">
-					<p id="infolettre"></p>
+					
 					<p id="saisielettre">
 						<span>cliquer une lettre:</span>					
 						<p id="clavier"></p>					
 					</p> 
+					<p id="infolettre"></p>
 					<span id="nbessai"></span>    
 					<span id="erreurrestant"></span>
 				</div>

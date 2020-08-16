@@ -2,15 +2,27 @@
     $tab = array();  
     $nom = ""; 
     $niveau = 1;
+    $lang = "fr";
     $motlenmax = 7;
     $motlenmin = 4;
     $motlower = "";
     $ind = 0; 
     $obj = ""; 
-    $fichier = fopen('ficnom.txt', 'rb');
-
+    $lang = $_GET['lang'];
+    switch ($lang) {
+        case 'fr':
+            $fichier = fopen('ficnom.txt', 'rb');
+            break;
+        case 'en':
+            $fichier = fopen('english.txt', 'rb');
+            break;
+        default:
+            $fichier = fopen('ficnom.txt', 'rb');
+            break;
+        }
     // according to level choose the length of the word
     $niveau = $_GET['niveau'];
+    
     switch ($niveau) {
         case 1:
             $motlenmax = 7;

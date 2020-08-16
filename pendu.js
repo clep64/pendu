@@ -26,6 +26,7 @@ function loadinit() {
 //  and give focus to the first input
 //  hide the rest of the page but the input of level
 //
+console.log(lang);
   nbtry = 0;    
   document.getElementById("main").style.display = "none";
   document.getElementById('infolettre').innerHTML = "";
@@ -97,10 +98,8 @@ function letterclicked(event){
   if (!lettreinmot){      
     document.getElementById('infolettre').innerHTML = "!!! la lettre "+x+" n'est pas dans le mot !!!";
     document.getElementById('infolettre').style.color = "red"; 
-    nberror++;  
-    
-    document.getElementById("imageerreur").src = imgarray[nberror].src; 
-    console.log(document.getElementById("imageerreur")) ;  
+    nberror++;      
+    document.getElementById("imageerreur").src = imgarray[nberror].src;     
   }
 
   // be the letter in the word or not -> display nb try and nb errors
@@ -140,23 +139,21 @@ function getword(glevel){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       mot = this.responseText; 
+      console.log(mot);
       motsansaccent = no_accent(mot);       
       document.getElementById("main").style.display = "block";
-    console.log(mot);
-    console.log(motsansaccent);
       motarray = motsansaccent.split(""); 
       motaffiche2 = "?".repeat(motarray.length); 
       var i = motarray.indexOf("-", 0);       
       while (i >= 0) {         
         motaffiche2 = motaffiche2.substr(0,i) + "-" + motaffiche2.substr(i+1,motarray.length);
-        console.log(motaffiche2);
         i = motarray.indexOf("-", ++i);         
       }
       document.getElementById('affichmot').innerHTML = motaffiche2;       
     }
   };
   
-  xhttp.open("GET", "pendu-word.php?niveau="+glevel, true);
+  xhttp.open("GET", "pendu-word.php?niveau="+glevel+"&lang="+lang, true);
   xhttp.send();  
 
 }
