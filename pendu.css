@@ -98,7 +98,12 @@ body {
   padding-right: 1%;
 }
 #newgame{
+  display: inline-block;
   margin-top: 2em;
+}
+#retourmenu {
+  display: inline-block;
+  margin-left: 2em;
 }
 .button {
   background-color: #4CAF50;

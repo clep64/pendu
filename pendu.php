@@ -1,3 +1,7 @@
+<?php
+	$lang = $_GET['lang'];
+    setcookie('lang',"$lang" , 0, "/");
+?>
 <!DOCTYPE html >
 <html>
     <head> 
@@ -7,7 +11,7 @@
         <link rel="shortcut icon" type="image/png" href="images/jeux.png"/>
 		<script>		
 			<?php
-				$lang = $_GET['lang'];
+				//$lang = $_GET['lang'];
 				echo "var lang = '" . $lang ."';";
 			?>
 		</script>
@@ -46,6 +50,7 @@
 			</div>
 			<div id="exit">
 				<button id="newgame" class="button" type="button" onclick="newgame()">Nouvelle Partie</button>
+				<button id="retourmenu" class="button" type="button" onclick="window.location.href='index.html'">Retour Menu</button>
 			</div> 
 		</div>
 		<script src="pendu.js"></script>

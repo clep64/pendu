@@ -162,6 +162,10 @@ function newgame(){
   window.location.reload();
 }
 //====================================================================================  
+function backtohome(){
+  window.location.href='/index.html';
+}
+//====================================================================================  
 function disptime(){
   datejour = new Date();
   var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Sptembre", "Octobre", "Novembre", "Décembre"];
