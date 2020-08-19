@@ -6,6 +6,7 @@ var motsansaccent = no_accent(mot);
 var motaffiche2 ="";
 var nberrormax = 8;
 var motarray = [];
+var indice = "";
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var imgsrcarray = [
   "images/pendu-err/p1.jpg",
@@ -19,6 +20,7 @@ var imgsrcarray = [
   "images/pendu-err/p9.jpg",
   ];
   var imgarray = [];
+  var dict;
 //====================================================================================
 function loadinit() {
 //  init variables
@@ -26,7 +28,6 @@ function loadinit() {
 //  and give focus to the first input
 //  hide the rest of the page but the input of level
 //
-console.log(lang);
   nbtry = 0;    
   document.getElementById("main").style.display = "none";
   document.getElementById('infolettre').innerHTML = "";
@@ -99,7 +100,10 @@ function letterclicked(event){
     document.getElementById('infolettre').innerHTML = "!!! la lettre "+x+" n'est pas dans le mot !!!";
     document.getElementById('infolettre').style.color = "red"; 
     nberror++;      
-    document.getElementById("imageerreur").src = imgarray[nberror].src;     
+    document.getElementById("imageerreur").src = imgarray[nberror].src; 
+    if (nberror > 2) {
+      document.getElementById('indice').innerHTML = "indication : " + indice;
+    }
   }
 
   // be the letter in the word or not -> display nb try and nb errors
@@ -149,11 +153,32 @@ function getword(glevel){
         motaffiche2 = motaffiche2.substr(0,i) + "-" + motaffiche2.substr(i+1,motarray.length);
         i = motarray.indexOf("-", ++i);         
       }
-      document.getElementById('affichmot').innerHTML = motaffiche2;       
+      document.getElementById('affichmot').innerHTML = motaffiche2;  
+      getdef(mot);     
     }
   };
   
   xhttp.open("GET", "pendu-word.php?niveau="+glevel+"&lang="+lang, true);
+  xhttp.send();  
+
+}
+//====================================================================================  
+function getdef(mot){
+  var xhttp = new XMLHttpRequest();
+  
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      do {
+        dict = this.response;
+      } while (!dict);
+      var tt = Object.keys(dict[0].meaning)[0];
+      indice = dict[0].meaning[tt][0].definition;
+      console.log("indice: "+indice);
+    }
+  }
+  
+  xhttp.open("GET", "https://api.dictionaryapi.dev/api/v1/entries/"+lang+"/"+mot, true);
+  xhttp.responseType = 'json';
   xhttp.send();  
 
 }

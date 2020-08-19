@@ -46,6 +46,7 @@
 					<p id="infolettre"></p>
 					<span id="nbessai"></span>    
 					<span id="erreurrestant"></span>
+					<p id="indice"></p>
 				</div>
 			</div>
 			<div id="exit">
