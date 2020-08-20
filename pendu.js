@@ -101,8 +101,16 @@ function letterclicked(event){
     document.getElementById('infolettre').style.color = "red"; 
     nberror++;      
     document.getElementById("imageerreur").src = imgarray[nberror].src; 
-    if (nberror > 2) {
-      document.getElementById('indice').innerHTML = "indication : " + indice;
+    if (indice != "") {
+      if (lang == "fr" && nberror > 6 ) {
+        document.getElementById('indice').innerHTML = "indication : " + indice;
+      }
+      if (lang == "en" && nberror > 1 ) {
+        document.getElementById('indice').innerHTML = "indication : " + indice;
+      }
+
+    } else {
+      document.getElementById('indice').innerHTML = "";
     }
   }
 
@@ -167,13 +175,14 @@ function getdef(mot){
   var xhttp = new XMLHttpRequest();
   
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      do {
-        dict = this.response;
-      } while (!dict);
+    if (this.readyState == 4 && this.status == 200) {      
+      dict = this.response;      
       var tt = Object.keys(dict[0].meaning)[0];
       indice = dict[0].meaning[tt][0].definition;
       console.log("indice: "+indice);
+    } else {
+      console.log("status : "+this.status);
+      console.log("readystate : "+this.readyState);
     }
   }
   
