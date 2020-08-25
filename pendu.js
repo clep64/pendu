@@ -44,7 +44,8 @@ function checkniveau(niv) {
 //   
   level = niv;
   document.getElementById("buttonniveau").style.display = "none";
-  document.getElementById('pniveau').innerHTML = "vous êtes au niveau: "+level;  
+  console.log (langLevelInfo+level);
+  document.getElementById('pniveau').innerHTML = langLevelInfo+level;  
 
   getword(level);
 
@@ -101,7 +102,7 @@ function letterclicked(event){
     var motaffiche = document.getElementById("affichmot").innerHTML ;      
     motaffiche2 = motaffiche.substr(0,indexlettre) + mot.charAt(indexlettre) + motaffiche.substr(indexlettre+1,motaffiche.length);      
     document.getElementById("affichmot").innerHTML = motaffiche2; 
-    document.getElementById('infolettre').innerHTML = "!!! la lettre "+x+" est bien dans le mot !!!";
+    document.getElementById('infolettre').innerHTML = langLetterFound1+x+langLetterFound2;
     document.getElementById('infolettre').style.color = "green";
 
     indexlettre++;
@@ -112,7 +113,7 @@ function letterclicked(event){
   // if google api was not successfull do not display indication
   //
   if (!lettreinmot){      
-    document.getElementById('infolettre').innerHTML = "!!! la lettre "+x+" n'est pas dans le mot !!!";
+    document.getElementById('infolettre').innerHTML = langLetterNotFound1+x+langLetterNotFound2;
     document.getElementById('infolettre').style.color = "red"; 
     nberror++;      
     document.getElementById("imageerreur").src = imgarray[nberror].src; 
@@ -131,16 +132,17 @@ function letterclicked(event){
 
   // be the letter in the word or not -> display nb try and nb errors
   //
-  document.getElementById("nbessai").innerHTML = "vous avez fait "+nbtry+ " essais dont "+nberror+" erreurs";
+  document.getElementById("nbessai").innerHTML = langTryAndErrors1+nbtry+ langTryAndErrors2+nberror+langTryAndErrors3;
   var reste = nberrormax-nberror;
-  document.getElementById("erreurrestant").innerHTML = "<br>il vous reste "+reste+ " erreurs";
+  document.getElementById("erreurrestant").innerHTML = langRemainingErrors1 +reste+ langRemainingErrors2;
+  ;
 
   // if no '?' all letters have been found
   // tell the user
   // and whipe the other information out
   //
   if (!motaffiche2.includes("?")){
-    document.getElementById('infolettre').innerHTML ="!!! vous avez trouvé en "+nbtry+" essais !!!";
+    document.getElementById('infolettre').innerHTML =langWin1 +nbtry+ langWin2;
     document.getElementById("infolettre").style.fontSize = "1.5em";
     document.getElementById('infolettre').style.color = "green";
     
@@ -152,7 +154,7 @@ function letterclicked(event){
   // if nb max errors  game over 
   // 
   if (nberror >= nberrormax) {
-    document.getElementById('infolettre').innerHTML ="!!! vous avez perdu !!!";
+    document.getElementById('infolettre').innerHTML =langlost;
     document.getElementById("infolettre").style.fontSize = "1.5em";
     document.getElementById('infolettre').style.color = "red";
     document.getElementById("affichmot").innerHTML = mot;

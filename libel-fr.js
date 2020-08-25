@@ -1,0 +1,13 @@
+var langLevelInfo = "vous êtes au niveau: ";  
+var langLetterFound1 = "!!! la lettre ";
+var langLetterFound2 = " est bien dans le mot !!!";
+var langLetterNotFound1 = "!!! la lettre ";
+var langLetterNotFound2 = " n'est pas dans le mot !!!";
+var langTryAndErrors1 = "vous avez fait ";
+var langTryAndErrors2 = " essais dont ";
+var langTryAndErrors3 = " erreurs";
+var langRemainingErrors1 = "<br>il vous reste ";
+var langRemainingErrors2 = " erreurs";
+var langWin1 = "!!! vous avez trouvé en ";
+var langWin2 = " essais  !!!";
+var langlost = "!!! vous avez perdu  !!!";

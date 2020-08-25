@@ -1,28 +1,40 @@
 <?php
+// get language, set a cookie and include the text from the corresponding language file
 	$lang = $_GET['lang'];
-    setcookie('lang',"$lang" , 0, "/");
+	setcookie('lang',"$lang" , 0, "/");	
+	if ($lang == "fr"){
+		include 'libel-fr.php';
+	} else {
+		include 'libel-en.php';
+	}
 ?>
 <!DOCTYPE html >
 <html>
     <head> 
-	    <title>jeu du pendu</title>
+		<?php 
+		echo "<title>$langTitre1</title>";
+		?>
 	    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
         <LINK rel="stylesheet" type="text/css" href="pendu.css">
         <link rel="shortcut icon" type="image/png" href="images/jeux.png"/>
 		<script>		
 			<?php
-				//$lang = $_GET['lang'];
 				echo "var lang = '" . $lang ."';";
+
 			?>
 		</script>
 	</head>
     <body onload="loadinit()">
         <div id="titrehtml">
             <img src="images/jeux.png" alt="logo du site" class="centerimagetitre">
-            <h1> Jouons au Pendu </h1>
+			<?php
+				echo "<h1>$langTitre2</h1>";				
+			?>			
         </div>
 		<div id="saisieniveau" > 
-			<p id="pniveau" >choisissez votre niveau :</p>
+			<?php
+				echo "<p id='pniveau' >$langNiveau1</p>";				
+			?>			
 			<p id="buttonniveau" >
 				<button type="button" class="niveau"  onclick="checkniveau(1)">*</button>
 				<button type="button" class="niveau"  onclick="checkniveau(2)">**</button>
@@ -37,10 +49,11 @@
 				<div id="mot" >
 					<h2 id=affichmot></h2>
 				</div>
-				<div id="corpsjeu">
-					
+				<div id="corpsjeu">					
 					<p id="saisielettre">
-						<span>cliquer une lettre:</span>					
+					<?php
+						echo "<span>$langClickLetter</span>";				
+					?>											
 						<p id="clavier"></p>					
 					</p> 
 					<p id="infolettre"></p>
@@ -50,10 +63,15 @@
 				</div>
 			</div>
 			<div id="exit">
-				<button id="newgame" class="button" type="button" onclick="newgame()">Nouvelle Partie</button>
-				<button id="retourmenu" class="button" type="button" onclick="window.location.href='index.html'">Retour Menu</button>
+				<?php
+				echo '<button id="newgame" class="button" type="button" onclick="newgame()">'.$langNewGame.'</button>';
+				echo '<button id="retourmenu" class="button" type="button" onclick="window.location.href=\'index.html\'">'.$langBack.'</button>';
+				?>
 			</div> 
 		</div>
+		<?php
+			echo '<script src="libel-'.$lang.'.js"></script>';				
+		?>		
 		<script src="pendu.js"></script>
     </body>
 </html>
