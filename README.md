@@ -8,5 +8,5 @@ Je suis donc preneur de toute suggestion pour rendre le code plus clair, plus pr
 the hangman - 
 Put all files on a server and that's it. 
 You can play in French or in English. 
-this is my first programm in javascript. 
+this is my first program in javascript. 
 I am therefore open to any suggestion to make the code clearer, cleaner, more efficient. 
